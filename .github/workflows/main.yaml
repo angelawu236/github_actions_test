@@ -61,7 +61,7 @@ jobs:
 
       - name: Run a script
         id: run_script
-        run: ./get_link_script.py
+        run: python scripts/get_link_script.py
 
       - name: Edit PR
         uses: actions/github-script@v7
