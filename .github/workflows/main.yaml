@@ -6,8 +6,6 @@ on:
   # push:
   #   branches:
   #     - main
-env: 
-  GH_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
 
 jobs:
   build:
@@ -41,12 +39,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: read
+      pull-requests: write
       issues: write
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with: 
-          github_token: ${{ env.GH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           labels: need-tester
       - name: Job Summary
         run: echo "Added Label to PR"
@@ -58,6 +56,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.12
+      
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
       - name: Run a script
         id: run_script
@@ -71,7 +72,7 @@ jobs:
               pull_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: ${{ steps.run_script.outputs.body }}
+              body: `${{ steps.run_script.outputs.body }}`
             })
       - name: Job Summary
         run: echo "Edited description of PR"
