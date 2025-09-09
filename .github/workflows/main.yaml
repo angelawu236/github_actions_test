@@ -6,8 +6,6 @@ on:
   # push:
   #   branches:
   #     - main
-env: 
-  GH_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
 
 jobs:
   build:
@@ -46,7 +44,7 @@ jobs:
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with: 
-          github_token: ${{ env.GH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           labels: need-tester
       - name: Job Summary
         run: echo "Added Label to PR"
