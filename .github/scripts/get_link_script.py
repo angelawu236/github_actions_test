@@ -1,6 +1,6 @@
 import os
 
-# This script just adds/sets a GITHUB_ACTIONS paramenter "body" to a link 
+# This script just adds/sets a GITHUB_OUTPUTS paramenter "body" to a link 
 
 link = "https://github.com/codemagic-ci-cd/cli-tools"
 
