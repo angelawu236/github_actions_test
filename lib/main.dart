@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return const MaterialApp(
-      home: SafeArea(child: Text("hello flutter 2!2", style: TextStyle(color: Colors.white ),),),
+      home: SafeArea(child: Text("hello flutter 2!", style: TextStyle(color: Colors.white ),),),
     );
   }
 }
